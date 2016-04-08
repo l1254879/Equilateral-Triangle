@@ -1,5 +1,6 @@
 #include<string>
 #include<iostream>
+#include<iomanip>
 #include<cmath>
 #include"triangle.h"
 
@@ -51,19 +52,19 @@ triangle::triangle(int call_size,const char call_border,const char call_fill){
 	JudgeFill(call_fill);
 }
 //return the size
-int triangle::GetSize(){
+const int triangle::GetSize(){
 	return size;
 }
 //return the perimeter
-int triangle::Perimeter(){	
+const int triangle::Perimeter(){	
 	return 3*size;//triangle have three side 
 }
 //return the area
-double triangle::Area(){
+const double triangle::Area(){
 	return size*(size*0.5*sqrt(3))*0.5;//triangle formula is side*high/2
 }
 //size add 1
-int triangle::Grow(){
+const int triangle::Grow(){
 	if(size+1 <= 39){// size add 1 cannot over the 39
 		size = size + 1;
 		return size;
@@ -72,7 +73,7 @@ int triangle::Grow(){
 		return 39;
 }
 //size minus 1
-int triangle::Shrink(){
+const int triangle::Shrink(){
 	if(size-1 >= 1){// size minus one cannot less than 1 
 		size = size - 1;
 		return size;
@@ -90,26 +91,31 @@ void triangle::SetFill(char set_fill){
 	JudgeFill(set_fill);
 }
 //show all the info
-void triangle::Summary(){
+const void triangle::Summary(){
 	cout<<"Size of triangle's side = "<<size<<" units.\n";
 	cout<<"Perimeter of triangle = "<<Perimeter()<<" units.\n";
-	cout<<"Area of triangle = "<<Area()<<" units.\n";
+	cout<<"Area of triangle = "<<setprecision(4)<<Area()<<" units.\n";
 	cout<<"triangle looks like : "<<endl;
 	Draw();
 	cout<<endl;
 }
 //draw the triangle
-void triangle::Draw(){
+const void triangle::Draw(){
+	int char_sum = 0;
 	for(int i=0;i<=size;i++){
 		for(int k=size;k>=i;k--)
 			cout<<" ";
 		for(int j=0;j<i;j++){
-	
-			if(j==0||j==i-1||i==size)
+			if(j==0||j==i-1||i==size){
 				cout<<border<<" ";
-			else
+				char_sum = char_sum + 1;
+			}
+			else{
 				cout<<fill<<" ";
+				char_sum = char_sum + 1;
+			}
 		}
 		cout<<"\n";
 	}
+	cout<<"\n"<<"Spend "<<char_sum<<" char"<<endl;
 }

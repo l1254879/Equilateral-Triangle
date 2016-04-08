@@ -15,13 +15,15 @@ class triangle{
 		triangle(int);
 		triangle(int,char);
 		triangle(int,char,char);
-		int GetSize();
-		int Perimeter();
-		double Area();
-		int Grow();
-		int Shrink();
+		const int GetSize();
+		const int Perimeter();
+		const double Area();
+		const int Grow();
+		const int Shrink();
 		void SetBorder(char);
 		void SetFill(char);
-		void Draw();
-		void Summary();
+		const void Draw();
+		const void Summary();
+		
+	
 };
