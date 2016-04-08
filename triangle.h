@@ -8,6 +8,9 @@ class triangle{
 		int size;
 		char border;
 		char fill;
+		int JudgeSize(int);
+		char JudgeBorder(char);
+		char JudgeFill(char);
 	public:
 		triangle(int);
 		triangle(int,char);
@@ -17,8 +20,8 @@ class triangle{
 		double Area();
 		int Grow();
 		int Shrink();
-		int SetBorder(char);
-		int SetFill(char);
+		void SetBorder(char);
+		void SetFill(char);
 		void Draw();
 		void Summary();
 };
